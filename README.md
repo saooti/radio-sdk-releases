@@ -82,7 +82,7 @@ Fournir `radioId` ou `cip` au montage. **Le CIP est prioritaire**, y compris cel
 
 Le SDK gère capture PCM, sélection persistante, groupes, sourdine locale et reprises. Utiliser `client.play()`, `client.pause()`, `client.stop()` et `client.speakers.select(ids)`, sans seconde orchestration. Pour vérifier l'intégration, attendre `player.ready`, lire `client.getVersions()`, sélectionner une enceinte avec les commandes et consulter `await client.getDiagnostics()` en cas d'échec. Le sample fournit les contrôles et la fenêtre de diagnostic. Statistiques et réparation du pare-feu sont facultatives et se configurent dans main.
 
-## Modules facultatifs
+## Configuration complémentaire
 
 Dans main, compléter la création du backend et de l'hôte de l'étape 2 avec les modules retenus. `hostOptions` reprend les options de cette étape ; `currentCip` appartient à l'application. `statisticsAuthentication` contient les identifiants OAuth `{ clientId, clientSecret }` des statistiques, distincts du compte du lecteur.
 
