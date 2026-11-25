@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Radio SDK Sample</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="renderer.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-native-state="starting">
+    <main>
+      <header class="toolbar">
+        <p id="radio"></p>
+        <div class="toolbar-status">
+          <span id="versions" class="version-label" aria-label="Versions du SDK et du lecteur"></span>
+          <button id="restart" class="session-restart-button" type="button" disabled><span class="button-label">Rafraîchir</span></button>
+        </div>
+      </header>
+      <div class="support-tools">
+        <button id="diagnostics" class="support-button" type="button" disabled><span class="button-label">Diagnostic</span></button>
+        <span id="diagnostics-status" role="status" aria-live="polite"></span>
+        <div class="logging-panel" role="group" aria-label="Logs">
+          <div class="logging-actions">
+            <label><input id="debug-logging" type="checkbox" disabled /> <span id="debug-label">Logs détaillés</span></label>
+            <button id="export-basic" type="button" disabled><span class="button-label">basic.log</span></button>
+            <button id="export-debug" type="button" disabled><span class="button-label">debug.log</span></button>
+            <button id="devtools" type="button"><span class="button-label">DevTools</span></button>
+          </div>
+          <p id="logging-status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+      <p id="failure" class="failure" role="alert" hidden></p>
+      <div id="workspace">
+        <section id="player-section" aria-label="Lecteur"><div id="player"></div></section>
+        <section id="speakers-section" aria-label="Contrôles d’enceintes"><div id="speakers"></div></section>
+      </div>
+      <section id="restart-progress" class="restart-progress" role="status" aria-live="polite" hidden>
+        <div class="player-loader" aria-hidden="true"></div>
+        <p id="restart-message">Redémarrage de la radio…</p>
+      </section>
+    </main>
+    <script type="module" src="renderer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "name": "radio-sdk-sample",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Application de démonstration Electron du SDK radio Saooti",
+  "license": "SEE LICENSE IN LICENSE",
+  "type": "module",
+  "main": "src/main.mjs",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "postinstall": "install-electron",
+    "sdk:install": "node scripts/install-sdk.mjs",
+    "build": "node scripts/build.mjs",
+    "start": "npm run build && electron .",
+    "package": "npm run build && electron-builder --dir --config electron-builder.config.mjs"
+  },
+  "dependencies": {
+    "@saooti/radio-sdk": "https://github.com/saooti/radio-sdk-releases/releases/download/v0.1.0/saooti-radio-sdk-0.1.0.tgz"
+  },
+  "devDependencies": {
+    "electron": "45.5.0",
+    "electron-builder": "26.18.1",
+    "esbuild": "0.28.2"
+  },
+  "allowScripts": {
+    "esbuild": true
+  },
+  "overrides": {
+    "minimatch@>=7.0.0 <11.0.1": "11.0.9"
+  }
+}
