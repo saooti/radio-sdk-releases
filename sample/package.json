@@ -1,6 +1,6 @@
 {
   "name": "radio-sdk-sample",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "private": true,
   "description": "Application de démonstration Electron du SDK radio Saooti",
   "license": "SEE LICENSE IN LICENSE",
@@ -17,7 +17,7 @@
     "package": "npm run build && electron-builder --dir --config electron-builder.config.mjs"
   },
   "dependencies": {
-    "@saooti/radio-sdk": "https://github.com/saooti/radio-sdk-releases/releases/download/v0.1.1/saooti-radio-sdk-0.1.1.tgz"
+    "@saooti/radio-sdk": "https://github.com/saooti/radio-sdk-releases/releases/download/v0.1.0/saooti-radio-sdk-0.1.0.tgz"
   },
   "devDependencies": {
     "electron": "45.5.0",
