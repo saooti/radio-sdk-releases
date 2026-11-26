@@ -2,6 +2,14 @@ import { MINIPLAYER_ENVIRONMENTS } from '@saooti/radio-sdk/renderer';
 
 export const SAMPLE_ORIGIN = 'sample://radio-sdk-sample';
 
+const IMA_SCRIPT_SOURCES = [
+  'https://imasdk.googleapis.com/js/sdkloader/ima3.js',
+  'https://s0.2mdn.net/instream/video/client.js',
+  'https://pagead2.googlesyndication.com/omsdk/releases/live/omweb-v1.js'
+];
+// IMA includes its version and locale in the bridge filename.
+const IMA_BRIDGE_SOURCE = 'https://imasdk.googleapis.com/js/core/';
+
 export function launchConfig(args = [], env = process.env) {
   const value = (key, fallback) => args.find(argument => argument.startsWith(key + '='))?.slice(key.length + 1) ?? fallback;
   const radioId = value('--radio', env.SAOOTI_RADIO_ID);
@@ -42,9 +50,12 @@ export function contentSecurityPolicy(platform) {
   const origin = MINIPLAYER_ENVIRONMENTS[platform];
   if (!origin) throw new Error('Plateforme du lecteur invalide.');
   return [
-    "default-src 'none'", `script-src 'self' blob: ${origin}`, `style-src 'self' 'unsafe-inline' https: ${origin}`,
+    "default-src 'none'",
+    `script-src 'self' blob: ${origin} ${IMA_SCRIPT_SOURCES.join(' ')}`,
+    `style-src 'self' 'unsafe-inline' https: ${origin}`,
     `connect-src 'self' https: wss: ${origin}`, `img-src https: data: ${origin}`, `font-src https: data: ${origin}`,
-    `media-src https: blob: data: ${origin}`, "worker-src 'self' blob:", "base-uri 'none'", "form-action 'none'", "frame-src 'none'"
+    `media-src https: blob: data: ${origin}`, "worker-src 'self' blob:", "base-uri 'none'", "form-action 'none'",
+    `frame-src ${IMA_BRIDGE_SOURCE}`
   ].join('; ');
 }
 
